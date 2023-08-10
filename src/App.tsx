@@ -24,7 +24,6 @@ function App() {
         ],
         borderColor: "white",
         borderWidth: 2,
-        radius: 150,
       }
     ]
   })
