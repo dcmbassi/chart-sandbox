@@ -15,3 +15,13 @@ export const BarChartData = [
     {id: 6, month: 'June', collection: 390, disbursement: 155},
     {id: 7, month: 'July', collection: 650, disbursement: 350},
 ]
+
+export const LineChartData = [
+    {id: 1, day: 'Monday', sales: 25000, purchases: 15000},
+    {id: 2, day: 'Tuesday', sales: 40000, purchases: 22500},
+    {id: 3, day: 'Wednesday', sales: 80000, purchases: 50000},
+    {id: 4, day: 'Thursday', sales: 15000, purchases: 30000},
+    {id: 5, day: 'Friday', sales: 53500, purchases: 38000},
+    {id: 6, day: 'Saturday', sales: 39000, purchases: 4200},
+    {id: 7, day: 'Sunday', sales: 65000, purchases: 23000},
+]

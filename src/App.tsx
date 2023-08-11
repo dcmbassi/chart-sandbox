@@ -1,12 +1,34 @@
 import { useState } from 'react';
-import { Chart as ChartJS, CategoryScale, LinearScale, ArcElement, BarElement, Title, Tooltip, Legend } from "chart.js";
-import { PieChartData, BarChartData } from "./utils/mockData";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  ArcElement,
+  BarElement,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+} from "chart.js";
+import { PieChartData, BarChartData, LineChartData } from "./utils/mockData";
 import './App.css'
 import ChartCard from './components/ChartCard';
 import PieChart from './components/PieChart';
 import BarChart from './components/BarChart';
+import LineChart from './components/LineChart';
 
-ChartJS.register(CategoryScale, LinearScale, ArcElement, BarElement, Title, Tooltip, Legend)
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  ArcElement,
+  BarElement,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+)
 
 function App() {
   const [pieDataset] = useState({
@@ -47,12 +69,33 @@ function App() {
     ]
   })
 
+  const [lineDataset] = useState({
+    labels: LineChartData.map(data => data.day),
+    datasets: [
+      {
+        label: 'Ventes',
+        data: LineChartData.map(data => data.sales),
+        lineTension: 0.4,
+        backgroundColor: 'rgba(100, 200, 75, .3)',
+        borderColor: 'rgb(100, 200, 75)',
+      },
+      {
+        label: 'Achats',
+        data: LineChartData.map(data => data.purchases),
+        lineTension: 0.4,
+        backgroundColor: 'rgba(200, 75, 100, .3)',
+        borderColor: 'rgb(200, 75, 100)',
+      },
+    ]
+  })
+
   return (
     <>
       <h4>Testing Charts</h4>
       <div className="chart-grid">
-        <ChartCard children={<PieChart chartData={pieDataset}/>} />
-        <ChartCard children={<BarChart chartData={barDataset}/>} />
+        <ChartCard children={<PieChart chartData={pieDataset} />} />
+        <ChartCard children={<BarChart chartData={barDataset} />} />
+        <ChartCard children={<LineChart chartData={lineDataset} />} />
       </div>
     </>
   )
